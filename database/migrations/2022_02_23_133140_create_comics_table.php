@@ -18,7 +18,7 @@ class CreateComicsTable extends Migration
             $table->string('title', 100);
             $table->string('author', 50);
             $table->integer('page');
-            $table->string('image', 100);
+            $table->string('image', 500);
             $table->text('description', 100);
             $table->decimal('price');
             $table->boolean('available');

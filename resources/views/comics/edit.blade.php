@@ -45,6 +45,7 @@
 
 
                     <input type="submit" class="btn btn-primary" value="Salva">
+                    <a class="btn btn-primary" href="{{ url()->previous() }}">Back</a>
                 </form>
             </div>
         </div>

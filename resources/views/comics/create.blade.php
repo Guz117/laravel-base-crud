@@ -37,6 +37,7 @@
                     <input type="text" class="form-control" id="available" name="available">
                 </div>
                 <input class="btn btn-primary" type="submit" value="Invia">
+                <a class="btn btn-primary" href="{{ url()->previous() }}">Back</a>
             </form>
         </div>
     </div>

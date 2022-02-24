@@ -7,18 +7,20 @@
             <h1 class="h1">Admin - All Comics</h1>
         </div>
         <div class="row">
-            <div class="col">
+            <div class="col mt-4 mb-4">
                 <a href="{{ route('comics.create') }}" class="btn btn-primary">Add new Comic</a>
             </div>
         </div>
         <div class="row">
             <div class="col">
-                 <table class="table table-primary">
+                 <table class="table table-warning">
                     <thead>
-                        <tr class="table-primary">
+                        <tr class="table-danger">
                             <th>Title</th>
                             <th>Author</th>
                             <th>Price</th>
+                            <th>View</th>
+                            <th>Edit</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -41,4 +43,5 @@
             </div>
         </div>
     </div>
+@endsection    
    

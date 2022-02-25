@@ -7,6 +7,18 @@ use Illuminate\Http\Request;
 
 class ComicController extends Controller
 {
+
+
+    protected $validation =  [
+        'title' => 'required|max:80',
+        'author' => 'required|max:60',
+        'page' => 'numeric',
+        'image' => 'nullable',
+        'description' => 'required',
+        'price' => 'required',
+        'available' => 'required',
+    ];
+
     /**
      * Display a listing of the resource.
      *
@@ -40,13 +52,25 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
+        $validateData = $request->validate($this->validation);
         // dd($request->all());
         $data = $request->all();
-        $comic = new Comic();
-        $comic->fill($data);
-        $comic->save();
+        $newComic = new Comic();
+        $newComic->title = $data['title'];
+        $newComic->author = $data['author'];
+        $newComic->email = $data['page'];
+        $newComic->url = $data['image'];
+        $newComic->url = $data['description'];
+        $newComic->url = $data['price'];
+        $newComic->url = $data['available'];
 
-        return redirect()->route('comics.show', $comic->id);
+        $saved = $newComic->save();
+
+        if (!$saved) {
+            dd('note saved');
+        }
+
+        return redirect()->route('comics.show', $newComic->id);
     }
 
     /**
@@ -71,6 +95,7 @@ class ComicController extends Controller
      */
     public function edit(Comic $comic)
     {
+
         return view('comics.edit', ['comic' => $comic]);
     }
 
@@ -83,6 +108,8 @@ class ComicController extends Controller
      */
     public function update(Request $request, Comic $comic)
     {
+        $validateData = $request->validate($this->validation);
+
         $data = $request->all();
         $update = $comic->update($data);
 
@@ -90,7 +117,7 @@ class ComicController extends Controller
             dd('errore');
         }
 
-        return redirect()->route('comics.show', $comic->id);
+        return redirect()->route('comics.show', ['comic' => $comic]);
     }
 
     /**

@@ -26,7 +26,7 @@ class ComicController extends Controller
      */
     public function index()
     {
-        $comics = Comic::paginate(20);
+        $comics = Comic::orderBy('updated_at', 'desc')->paginate(20);
         $data = [
             'comics' => $comics,
         ];

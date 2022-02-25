@@ -11,6 +11,15 @@
                 <a href="{{ route('comics.create') }}" class="btn btn-primary">Add new Comic</a>
             </div>
         </div>
+         <div class="row">
+            <div class="col">
+                @if (session('status'))
+                    <div class="alert alert-success">
+                        {{ session('status') }}
+                    </div>
+                @endif
+            </div>
+        </div>
         <div class="row">
             <div class="col">
                  <table class="table table-warning">

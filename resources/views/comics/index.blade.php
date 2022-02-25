@@ -21,6 +21,7 @@
                             <th>Price</th>
                             <th>View</th>
                             <th>Edit</th>
+                            <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -31,6 +32,14 @@
                             <td>{{ $comic->price }} €</td>
                             <td><a class="btn btn-primary" href="{{ route('comics.show', $comic) }}">View</a></td>
                             <td><a class="btn btn-primary" href="{{ route('comics.edit', $comic) }}">Edit</a></td>
+                            <td>
+                                <form action="{{ route('comics.destroy', $comic->id) }}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <input class="btn btn-danger" type="submit" value="Delete">
+                                </form> 
+                            </td>
+                            
                         </tr>
                     @endforeach
                     </tbody>

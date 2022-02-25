@@ -13,9 +13,9 @@ class ComicController extends Controller
         'title' => 'required|max:80',
         'author' => 'required|max:60',
         'page' => 'numeric',
-        'image' => 'nullable',
+        'image' => 'required',
         'description' => 'required',
-        'price' => 'required',
+        'price' => 'numeric',
         'available' => 'required',
     ];
 
@@ -58,11 +58,11 @@ class ComicController extends Controller
         $newComic = new Comic();
         $newComic->title = $data['title'];
         $newComic->author = $data['author'];
-        $newComic->email = $data['page'];
-        $newComic->url = $data['image'];
-        $newComic->url = $data['description'];
-        $newComic->url = $data['price'];
-        $newComic->url = $data['available'];
+        $newComic->page = $data['page'];
+        $newComic->image = $data['image'];
+        $newComic->description = $data['description'];
+        $newComic->price = $data['price'];
+        $newComic->available = $data['available'];
 
         $saved = $newComic->save();
 
